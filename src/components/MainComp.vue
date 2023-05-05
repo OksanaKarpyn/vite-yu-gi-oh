@@ -5,6 +5,9 @@ export default {
         return {
         }
     },
+    components: {
+
+    }
 
 }
 </script>
