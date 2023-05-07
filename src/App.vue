@@ -21,12 +21,17 @@ export default {
   },
   methods: {
     api() {
-
-      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=3')
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0')
         .then((res) => {
           console.log(res.data.data)
           const oggetti = res.data.data;
           this.store.arrayCards = oggetti
+
+          // oggetti.forEach((element, i) => {
+          //   console.log(element)
+          //   this.store.arrayCards = element
+          // });
+
         })
 
     }

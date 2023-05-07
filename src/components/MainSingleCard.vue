@@ -27,7 +27,19 @@ export default {
     div {
         img {
             width: 100%;
+
         }
+    }
+
+    h3 {
+        color: #fff;
+        text-align: center;
+        font-size: 1.6rem;
+        padding: 5px;
+    }
+
+    h2 {
+        text-align: center;
     }
 }
 </style>
