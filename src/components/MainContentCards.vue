@@ -1,5 +1,6 @@
 <script>
 import MainSingleCard from './MainSingleCard.vue';
+import SelectSearch from './SelectSearch.vue';
 import { store } from '../store';
 export default {
     name: 'MainContentCards',
@@ -10,22 +11,14 @@ export default {
     },
     components: {
         MainSingleCard,
+        SelectSearch,
     }
 }
 </script>
 <template>
-    <div class="main py-5">
+    <div class="main py-3">
         <div class="container">
-            <select name="" id="" class="form-select input">
-                <option value="#">Alien</option>
-                <option value="#">Alien</option>
-                <option value="#">Alien</option>
-                <option value="#">Alien</option>
-                <option value="#">Alien</option>
-                <option value="#">Alien</option>
-                <option value="#">Alien</option>
-                <option value="#">Alien</option>
-            </select>
+            <!-- <SelectSearch @emitsearch="api"></SelectSearch> -->
             <div class="bg-white">
                 <div class="count px-5">
                     <p class="mb-0">Found{{ store.arrayCards.length }} cards</p>
@@ -45,11 +38,6 @@ export default {
 .main {
     background-color: chocolate;
 
-    .input {
-        width: 200px;
-        margin-bottom: 40px;
-        padding: 15px;
-    }
 
     .count {
         background-color: black;

@@ -2,7 +2,7 @@
 import { store } from './store';
 import axios from 'axios';
 import HeaderComp from './components/HeaderComp.vue';
-import MainComp from './components/MainComp.vue';
+import SelectSearch from './components/SelectSearch.vue';
 import MainContentCards from './components/MainContentCards.vue';
 export default {
   name: 'AppVue',
@@ -13,7 +13,7 @@ export default {
   },
   components: {
     HeaderComp,
-    MainComp,
+    SelectSearch,
     MainContentCards,
   },
   created() {
@@ -21,18 +21,29 @@ export default {
   },
   methods: {
     api() {
-      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0')
-        .then((res) => {
-          console.log(res.data.data)
-          const oggetti = res.data.data;
-          this.store.arrayCards = oggetti
+      // axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=120&offset=0')
+      //   .then((res) => {
+      //     console.log(res.data.data)
+      //     const oggetti = res.data.data;
+      //     this.store.arrayCards = oggetti
+      //   })
 
-          // oggetti.forEach((element, i) => {
-          //   console.log(element)
-          //   this.store.arrayCards = element
-          // });
+      if (store.searchValue !== '') {
+        axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.searchValue}`)
+          .then((res) => {
+            console.log(res.data.data)
+            const oggetti = res.data.data;
+            this.store.arrayCards = oggetti
 
-        })
+          })
+      } else {
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=120&offset=0')
+          .then((res) => {
+            // console.log(res.data.data)
+            const oggetti = res.data.data;
+            this.store.arrayCards = oggetti
+          })
+      }
 
     }
   }
@@ -44,8 +55,10 @@ export default {
 
 <template>
   <HeaderComp></HeaderComp>
-  <MainComp></MainComp>
-  <MainContentCards></MainContentCards>
+  <SelectSearch @emitsearch="api"></SelectSearch>
+
+  <MainContentCards>
+  </MainContentCards>
 </template>
 
 <style lang="scss">

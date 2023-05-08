@@ -14,6 +14,8 @@ export default {
         <div v-for="(item, index) in propsCards.card_images" :key="index">
             <img :src="item.image_url" alt="">
         </div>
+        <!-- <img :src="propsCards.card_images[0].image_url" alt=""> -->
+
         <h3>{{ propsCards.name }}</h3>
         <h2>{{ propsCards.archetype }}</h2>
 
